@@ -107,7 +107,7 @@ public class Explorer {
 					System.out.println((i + 1) + "匹目通り抜け成功！\n");
 				} else {
 					System.out.println("\n隊長：");
-					System.out.println("相手は：パーワニでした。");
+					System.out.println("相手はパーワニでした。");
 					break;
 				}
 				//			チョキを出したとき
@@ -127,7 +127,6 @@ public class Explorer {
 				if (alligator == 3 || alligator == 1) {
 					System.out.println("\n隊長：");
 					String win = (alligator == 3) ? "グー" : "パーワニ";
-					System.out.println();
 					System.out.println("相手は" + win + "でした。");
 					System.out.println((i + 1) + "匹目通り抜け成功！\n");
 
