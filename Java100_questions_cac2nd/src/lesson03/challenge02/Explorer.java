@@ -1,5 +1,5 @@
 /**
- * 第3章 探検隊のお仕事
+ * 第3章 探検隊のお仕事 Q
  *
  * 問題2  食糧の準備
  *
@@ -55,16 +55,23 @@ public class Explorer {
 	public static void main(String[] args) throws IOException {
 
 		System.out.println("隊長：");
-		System.out.println("サバ缶を50個以上袋に詰めてください。\n");
+		System.out.println("サバ缶を50個以上袋に詰めてください。");
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int targetCans = 50;
 		int inputCans = 0;
 
-
 		//ここにfor文を利用した処理を記述
+		for (int i = 0; i < 3; i++) {
+			System.out.println("\n隊長：");
+			//			要素数は0スタートだから回数を表示したいときは(i+1)
+			//			ただし今回は残りの回数の表示だから(3-i)
+			System.out.println("あと" + (3 - i) + "回！\n");
+			System.out.print("袋に何個入れますか？＞");
+			String reststr1 = br.readLine();
+			inputCans += Integer.parseInt(reststr1);
 
-
+		}
 		if (inputCans >= targetCans) {
 			System.out.println("\n隊長：");
 			System.out.println("OK!");
@@ -73,6 +80,6 @@ public class Explorer {
 			System.out.println("\n隊長：");
 			System.out.println("いや、足りてないから...");
 		}
-
 	}
+
 }
