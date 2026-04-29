@@ -1,5 +1,7 @@
 /**
  * 第4章 倉庫番のお仕事
+
+
  *
  * 問題5  袋の中身を調べる【改訂版】
  *
@@ -23,6 +25,7 @@
  *  はい、
  *  【※ここに値を出力】袋目
  *  に入っていました。
+ *  １から５をランダムに並べて５が入った袋が何袋目かを表示する処理
  *
  */
 
@@ -32,16 +35,35 @@ public class WarehouseManager {
 
 	public static void main(String[] args) {
 
-
 		//ここに配列の宣言を記述する
 
+		int[] baggage = new int[5];
 
 		int intputNum = 0;
+		//		重複チェックのための真偽値
 		boolean loopFlag = false;
 
-
 		//ここに重複チェックおよび値の代入処理を記述する
+		for (int i = 0; i < baggage.length; i++) {
+			do {
+				loopFlag = false;
+				//				１から５をランダムに選択
+				intputNum = (int) (Math.random() * 10) % 5 + 1;
+				//				すでに同じ数字があるか確認する繰り返し
+				for (int j = 0; j < baggage.length; j++) {
+					//					例）
+					if (baggage[j] == intputNum) {
+						loopFlag = true;
+						break;
+					}
+				}
+				//			loopFlagがtrueの間ずっと繰り返す。
+			} while (loopFlag);
 
+			//			重複しない場合代入
+			baggage[i] = intputNum;
+
+		}
 
 		System.out.println("E主任：");
 		System.out.println("AB興産の荷物の検査結果を教えてください。\n");
@@ -49,10 +71,13 @@ public class WarehouseManager {
 		System.out.println("Yさん：");
 		System.out.println("はい、");
 
-
 		//ここに要素の確認および何袋目かの出力処理を記述する
-
-
+		for (int i = 0; i < baggage.length; i++) {
+			if (baggage[i] == 5) {
+				System.out.println((i + 1) + "袋目");
+				break;
+			}
+		}
 		System.out.println("に入っていました。");
 
 	}

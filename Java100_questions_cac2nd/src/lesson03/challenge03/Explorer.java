@@ -1,5 +1,6 @@
 /**
- * 第3章 探検隊のお仕事
+ * 第3章 探検隊のお仕事 Q
+
  *
  * 問題3  船で現地へ
  *
@@ -43,13 +44,14 @@ public class Explorer {
 		int apsedTime = 0;
 
 		//ここにwhile文を記述する。
-
+		while (nauticalMile > 0) {
 			nauticalMile -= 22;
 			System.out.println("隊長：");
+			//			apsedTime = 0; は０からスタートだから、表示の際は++
 			System.out.println((apsedTime += 1) + "時間たったよ\n");
 
-		//ここに  } を記述する。
-
+			//ここに  } を記述する。
+		}
 		System.out.println("到着！");
 
 	}

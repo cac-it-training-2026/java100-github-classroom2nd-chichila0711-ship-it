@@ -54,12 +54,50 @@ public class WarehouseManager {
 		int[] ABKosanArray1 = new int[5];
 		int[] ABKosanArray2 = new int[5];
 
-
 		//ここに重複チェックおよび値の代入処理を記述する①(1～5)
+		int inputNum = 0;
+		boolean loopFlag = false;
 
+		for (int i = 0; i < ABKosanArray1.length; i++) {
+			do {
+				loopFlag = false;
+				inputNum = (int) (Math.random() * 10) % 5 + 1;
+
+				for (int j = 0; j < ABKosanArray1.length; j++) {
+					if (ABKosanArray1[j] == inputNum) {
+						loopFlag = true;
+						break;
+					}
+				}
+
+			} while (loopFlag);
+
+			ABKosanArray1[i] = inputNum;
+		}
 
 		//ここに重複チェックおよび値の代入処理を記述する②(6～10)
+		inputNum = 0;
+		loopFlag = false;
 
+		for (int i = 0; i < ABKosanArray2.length; i++) {
+			do {
+				loopFlag = false;
+				inputNum = (int) (Math.random() * 10) % 10 + 1;
+				if (inputNum > 5) {
+					for (int j = 0; j < ABKosanArray2.length; j++) {
+						if (ABKosanArray2[j] == inputNum) {
+							loopFlag = true;
+							break;
+						}
+					}
+				} else {
+					loopFlag = true;
+				}
+
+			} while (loopFlag);
+
+			ABKosanArray2[i] = inputNum;
+		}
 
 		System.out.println("E主任：");
 		System.out.println("AB興産から新たに預かった荷物と以前から預かっている荷物の");
@@ -68,6 +106,7 @@ public class WarehouseManager {
 		System.out.println("Yさん：");
 		System.out.println("はい、");
 		System.out.println("以前から預かっている荷物の状態は、");
+
 		for (int i = 0; i < ABKosanArray1.length; i++) {
 			System.out.print(ABKosanArray1[i]);
 			if (i != (ABKosanArray1.length - 1)) {
@@ -88,11 +127,29 @@ public class WarehouseManager {
 		System.out.println("E主任：");
 		System.out.println("その二つの荷物を奇数群、偶数群で入れ替えてください。\n");
 
-
-
 		//ここに奇数群(ABKosanArray1)と偶数群(ABKosanArray2)に振り分ける処理を記述する。
+		int evenNumberIndex = 0;
+		int oddNumberIndex = 0;
+		int changeTimes = 0;
 
-
+		do {
+			for (int i = evenNumberIndex; i < ABKosanArray1.length; i++) {
+				if (ABKosanArray1[i] % 2 == 0) {
+					evenNumberIndex = i;
+					break;
+				}
+			}
+			for (int i = oddNumberIndex; i < ABKosanArray2.length; i++) {
+				if (ABKosanArray2[i] % 2 != 0) {
+					int temp = ABKosanArray1[evenNumberIndex];
+					ABKosanArray1[evenNumberIndex] = ABKosanArray2[i];
+					ABKosanArray2[i] = temp;
+					oddNumberIndex = i;
+					changeTimes++;
+					break;
+				}
+			}
+		} while (changeTimes < 2);
 
 		System.out.println("Yさん：");
 		System.out.println("はい、入れ替えました。");
@@ -105,8 +162,7 @@ public class WarehouseManager {
 		}
 		System.out.println("\nです。\n");
 
-		System.out.println("偶数群の荷物の状態は、");
-		System.out.println("");
+		System.out.println("偶数群の荷物の状態は,");
 		for (int i = 0; i < ABKosanArray2.length; i++) {
 			System.out.print(ABKosanArray2[i]);
 			if (i != (ABKosanArray2.length - 1)) {
